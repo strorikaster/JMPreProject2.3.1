@@ -15,7 +15,7 @@ public class UserRepositoryImpl implements UserRepository {
     @PersistenceContext
     EntityManager entityManager;
 
-    public List<User> index() {
+    public List<User> getAllUsers() {
         return entityManager.createQuery("from User", User.class).getResultList();
     }
 

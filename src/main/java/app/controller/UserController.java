@@ -25,7 +25,7 @@ public class UserController {
     @GetMapping()
     public String index(Model model) {
     //Получим всех людей из Dao и передадим на отображение в представление
-        model.addAttribute("users", userService.index());
+        model.addAttribute("users", userService.getAllUsers());
         return "users/index";
     }
 

@@ -14,6 +14,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
+import java.util.Properties;
 
 
 @Configuration
@@ -43,9 +44,20 @@ import javax.sql.DataSource;
             entityManager.setDataSource(getDataSource());
             entityManager.setPackagesToScan(new String[]{"app.model"});
             entityManager.setJpaVendorAdapter(vendorAdapter);
-            //entityManager.setJpaProperties(additionalProperties());
+            entityManager.setJpaProperties(additionalProperties());
             return entityManager;
         }
+
+    Properties additionalProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        properties.setProperty("entitymanager.packages.to.scan", "app");
+        properties.setProperty("hibernate.show_sql", "true");
+        properties.setProperty("hibernate.format_sql", "true");
+        properties.setProperty("db.characterEncoding", "utf8");
+        return properties;
+    }
 
         @Bean
         public PlatformTransactionManager transactionManager() {
