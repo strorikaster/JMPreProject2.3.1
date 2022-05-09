@@ -13,11 +13,6 @@ public class DataLoader{
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    public DataLoader (UserService userService) {
-//        this.userService = userService;
-//    }
-
     @PostConstruct
     public void fillDataBase() {
 

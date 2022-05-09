@@ -1,6 +1,5 @@
 package app.controller;
 
-import app.repository.UserRepository;
 import app.model.User;
 import app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
