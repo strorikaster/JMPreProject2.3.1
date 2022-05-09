@@ -26,19 +26,16 @@ public class UserRepositoryImpl implements UserRepository {
     @Transactional
     public void save(User user) {
         entityManager.persist(user);
-        entityManager.flush();
     }
 
     @Transactional
     public void update(User updatedUser) {
           entityManager.merge(updatedUser);
-          entityManager.flush();
     }
 
     @Transactional
     public void delete(int id) {
         User user = show(id);
         entityManager.remove(user);
-        entityManager.flush();
     }
 }

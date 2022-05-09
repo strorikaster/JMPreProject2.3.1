@@ -52,7 +52,7 @@ import java.util.Properties;
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
-        properties.setProperty("entitymanager.packages.to.scan", "app");
+        properties.setProperty("entitymanager.packages.to.scan", "app.model");
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.format_sql", "true");
         properties.setProperty("db.characterEncoding", "utf8");
