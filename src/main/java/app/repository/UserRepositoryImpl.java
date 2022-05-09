@@ -13,7 +13,7 @@ import java.util.List;
 public class UserRepositoryImpl implements UserRepository {
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     public List<User> getAllUsers() {
         return entityManager.createQuery("from User", User.class).getResultList();
@@ -23,17 +23,14 @@ public class UserRepositoryImpl implements UserRepository {
         return entityManager.find(User.class, id);
     }
 
-    @Transactional
     public void save(User user) {
         entityManager.persist(user);
     }
 
-    @Transactional
     public void update(User updatedUser) {
           entityManager.merge(updatedUser);
     }
 
-    @Transactional
     public void delete(int id) {
         User user = show(id);
         entityManager.remove(user);
